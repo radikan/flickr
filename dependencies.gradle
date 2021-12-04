@@ -1,0 +1,13 @@
+ext.versions = [
+        hilt         : '2.38.1',
+        rxjava       : '3.0.0',
+        paging       : '3.1.0',
+        retrofit     : '2.9.0',
+        moshi        : '1.12.0',
+        glide        : '4.12.0',
+        sting        : '1.1.1',
+        mockito      : '3.12.1',
+        mockitoKotlin: '3.2.0',
+        archTesting  : '1.1.1',
+        junit        : '4.13.2'
+]

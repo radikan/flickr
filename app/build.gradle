@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+}
+
+apply from: "$rootDir/dependencies.gradle"
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "yordanov.radoslav.flickr"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation "androidx.constraintlayout:constraintlayout:2.1.2"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation "androidx.activity:activity-ktx:1.4.0"
+
+    // ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    // LiveData
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$versions.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
+
+    // RxJava
+    implementation "io.reactivex.rxjava3:rxandroid:$versions.rxjava"
+    implementation "io.reactivex.rxjava3:rxjava:$versions.rxjava"
+
+    // Paging
+    implementation "androidx.paging:paging-runtime-ktx:$versions.paging"
+    implementation "androidx.paging:paging-rxjava3:$versions.paging"
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+    implementation "com.squareup.moshi:moshi:$versions.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$versions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$versions.glide"
+
+    testImplementation "android.arch.core:core-testing:$versions.archTesting"
+    testImplementation "org.mockito:mockito-inline:$versions.mockito"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$versions.mockitoKotlin"
+    testImplementation "junit:junit:$versions.junit"
+}
+
+kapt {
+    correctErrorTypes = true
+}
